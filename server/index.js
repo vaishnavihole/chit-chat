@@ -1,7 +1,9 @@
 const express = require('express');
 const mongoose = require("mongoose")
-const messageModel = require('./model/message')
+const path = require('path');
 require('dotenv').config();
+
+const messageModel = require('./model/message')
 
 const PORT = 5000;
 
@@ -48,6 +50,14 @@ app.get("/message", async(req, res)=>{
 
     res.json(messages);
 })
+
+if(process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
+  
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'))
+    });
+  }
 
 app.listen(PORT,()=>{
     console.log(`server started on port ${PORT}`);
