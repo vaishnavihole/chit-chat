@@ -1,0 +1,23 @@
+{
+  "name": "chit-chat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"cd client && npm start\" \"cd server && npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vaishnavihole/chit-chat.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vaishnavihole/chit-chat/issues"
+  },
+  "homepage": "https://github.com/vaishnavihole/chit-chat#readme",
+  "dependencies": {
+    "concurrently": "^7.3.0"
+  }
+}
