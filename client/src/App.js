@@ -1,47 +1,59 @@
 import './App.css';
-import React, {useEffect, useState} from "react";
-import axios from "axios";
-import ReceivedMessage from "./RecivedMessage/RecivedMessage";
-import SentMessage from "./SendMessage/SendMessage"
+import {BrowserRouter ,Route , Routes, Link} from "react-router-dom";
+import Localstorage from './Localstorage/Localstorage';
+import Auth from './Auth/Auth';
+// import React, {useEffect, useState} from "react";
+// import axios from "axios";
+// import ReceivedMessage from "./RecivedMessage/RecivedMessage";
+// import SentMessage from "./SendMessage/SendMessage"
 
 
 function App()
 {
 
-  const [data, setData] = useState([]);
+//   const [data, setData] = useState([]);
 
-  const [currentUser, setCurrentUser] = useState("");
+//   const [currentUser, setCurrentUser] = useState("");
 
-  const [currentMessage, setCurrentMessage] = useState("");
+//   const [currentMessage, setCurrentMessage] = useState("");
 
-  const [fetchTrigger, setFetchTrigger] = useState(false);
+//   const [fetchTrigger, setFetchTrigger] = useState(false);
 
 
-  useEffect(()=>{
-    async function fetchData(){
-      const response = await axios.get("/message");
-      setData(response.data);
-    }
-    fetchData();
-  }, [fetchTrigger]);
+//   useEffect(()=>{
+//     async function fetchData(){
+//       const response = await axios.get("/message");
+//       setData(response.data);
+//     }
+//     fetchData();
+//   }, [fetchTrigger]);
  
-  function sendMessage()
-  {
-    axios.post("/message", {
-      user: currentUser,
-      messageType: "text",
-      messageBody: currentMessage
-    });
+//   function sendMessage()
+//   {
+//     axios.post("/message", {
+//       user: currentUser,
+//       messageType: "text",
+//       messageBody: currentMessage
+//     });
 
-    setCurrentMessage("");
+//     setCurrentMessage("");
 
-    setFetchTrigger(!fetchTrigger);
+//     setFetchTrigger(!fetchTrigger);
 
-  }
+//   }
 
   return(
     <>
+ <div> 
+  <BrowserRouter>
+  <Routes>
+    <Route path="/localstorage" element={<Localstorage/>} />
+    <Route path="/auth" element={<Auth/>} />
+  </Routes>
+  </BrowserRouter>
+ </div>
 
+{/* 
       <div className="chat-container">
       <h2 className='text-center'>We Chat </h2>
       <div className='chat-container'>
@@ -80,7 +92,7 @@ function App()
 
         <center><button  onClick={sendMessage}>Send</button></center>
       </div>
-      </div>
+      </div> */}
     </>
   )
 }

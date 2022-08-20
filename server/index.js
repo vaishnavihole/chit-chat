@@ -39,7 +39,7 @@ app.post('/message',async(req, res)=>{
 
 })
 
-app.get("/meassge", async(req, res)=>{
+app.get("/message", async(req, res)=>{
      
     const messages = await messageModel.find()
 
