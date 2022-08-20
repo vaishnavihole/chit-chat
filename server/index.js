@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require("mongoose")
 const messageModel = require('./model/message')
+require('dotenv').config();
 
 const PORT = 5000;
 
@@ -8,9 +9,11 @@ const app = express();
 
 app.use(express.json());
 
-mongoose.connect('mongodb+srv://vaishu:vaishnavi@cluster0.84emy.mongodb.net/chit-chat?retryWrites=true&w=majority',()=>{
-    console.log("connected to dataabase 📦");
-})
+mongoose.connect(process.env.MONGO_URL, () =>{
+    console.log('Connected to monogoDB')
+});
+
+
 
 app.get('/health',(req, res)=>{
     res.json({
